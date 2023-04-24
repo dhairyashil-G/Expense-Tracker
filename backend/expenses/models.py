@@ -10,7 +10,7 @@ category_choices = (('Housing', 'Housing'), ('Transportation', 'Transportation')
 
 class Expenses(models.Model):
     date = models.DateField(default=date.today)
-    amount = models.BigIntegerField()
+    amount = models.PositiveBigIntegerField()
     category = models.CharField(max_length=255, choices=category_choices)
     description = models.TextField(blank=True, null=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
