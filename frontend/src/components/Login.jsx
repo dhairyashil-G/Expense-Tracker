@@ -1,16 +1,12 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
-import FormAction from "./FormAction";
-import FormExtra from "./FormExtra";
-import Alert from "./Alert";
 import axios from "axios";
 import AuthContext from "../context/AuthContext";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [alerts, setAlerts] = useState({});
   const { setUser, setAuthTokens } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -26,13 +22,9 @@ const Login = () => {
       setAuthTokens(response.data);
       setUser(jwt_decode(response.data.access));
       localStorage.setItem("authTokens", JSON.stringify(response.data));
-      setAlerts({ message: "Login succesful!", type: "success" });
-      navigate("/show_expenses");
+      navigate("/expenses/show_expenses");
     } catch (error) {
-      setAlerts({
-        message: "No active account found with the given credentials",
-        type: "error",
-      });
+      console.log(error);
     }
   };
 
@@ -43,7 +35,6 @@ const Login = () => {
 
   return (
     <div className="max-w-md mx-auto">
-      {alerts.message && <Alert message={alerts.message} type={alerts.type} />}
       <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
         <div className="space-y-px">
           <div className="my-3">
@@ -73,9 +64,8 @@ const Login = () => {
             />
           </div>
         </div>
-        <FormExtra />
         <div className="place-content-center">
-          <FormAction handleSubmit={handleSubmit} text="Login" />
+          <button type="submit">Submit</button>
         </div>
       </form>
     </div>
