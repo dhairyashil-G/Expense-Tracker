@@ -14,7 +14,7 @@ export default function Dashboard() {
       const response = await api.get(`/expenses/dashboard/`);
       //   console.log(JSON.parse(response.data.bar_fig));
       //   console.log(JSON.parse(response.data.line_fig));
-      // console.log(JSON.parse(response.data.pie_fig));
+      //   console.log(JSON.parse(response.data.pie_fig));
       //   console.log(JSON.parse(response.data.df));
       setBar(JSON.parse(response.data.bar_fig));
       setLine(JSON.parse(response.data.line_fig));

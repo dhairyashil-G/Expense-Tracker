@@ -10,6 +10,7 @@ import itertools
 from rest_framework.response import Response
 from django.db.models import Sum
 from django.db.models.functions import ExtractMonth
+from datetime import datetime
 
 # Create your views here.
 
@@ -64,14 +65,16 @@ def DashboardView(request):
     line_fig = go.Figure(data=[*line_charts, limit_line], layout=line_layout)
     line_fig_JSON = plotly.io.to_json(line_fig)
 
-    # Create a pie chart of expenses by category
-    category_proportions = expenses.values(
+    # Create a pie chart of current month expenses by category
+    current_month_expenses = expenses.filter(date__month=datetime.now().month)
+    category_proportions = current_month_expenses.values(
         'category').annotate(total=Sum('amount'))
-    category_proportions = itertools.chain(category_proportions, [
-                                           {'category': 'Remaining', 'total': request.user.limit - sum([x['total'] for x in category_proportions])}])
-    pie_chart = go.Pie(labels=[x['category'] for x in category_proportions], values=[
-                       x['total'] for x in category_proportions])
-    pie_layout = go.Layout(title='Proportions of Expenses by Category')
+    remaining_limit = request.user.limit - \
+        sum([x['total'] for x in category_proportions])
+    labels = [x['category'] for x in category_proportions] + ['Remaining']
+    values = [x['total'] for x in category_proportions] + [remaining_limit]
+    pie_chart = go.Pie(labels=labels, values=values)
+    pie_layout = go.Layout(title='Current Month\'s Expenses')
     pie_fig = go.Figure(data=[pie_chart], layout=pie_layout)
     pie_fig_json = plotly.io.to_json(pie_fig)
 
