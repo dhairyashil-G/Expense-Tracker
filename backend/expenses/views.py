@@ -49,7 +49,8 @@ def DashboardView(request):
 
     # Create a line chart of expenses over time
     time_series = expenses.annotate(month=ExtractMonth('date')).values(
-        'month').annotate(total=Sum('amount'))
+    'month').annotate(total=Sum('amount'))
+    all_time_series = time_series
     line_charts = []
     for category in expenses.values_list('category', flat=True).distinct():
         filtered_expenses = expenses.filter(category=category)
@@ -58,13 +59,14 @@ def DashboardView(request):
         line_chart = go.Scatter(x=[x['month'] for x in time_series], y=[
                                 x['total'] for x in time_series], name=category)
         line_charts.append(line_chart)
-    limit_y = [request.user.limit] * len(time_series)
-    limit_line = go.Scatter(x=[min([x['month'] for x in time_series]), max([x['month'] for x in time_series])],
+    limit_y = [request.user.limit] * len(all_time_series)
+    limit_line = go.Scatter(x=[min([x['month'] for x in all_time_series]), max([x['month'] for x in all_time_series])],
                             y=limit_y, mode='lines', name='Monthly Limit')
     line_layout = go.Layout(title='Expenses Over Time')
     line_fig = go.Figure(data=[*line_charts, limit_line], layout=line_layout)
     line_fig_JSON = plotly.io.to_json(line_fig)
 
+    
     # Create a pie chart of current month expenses by category
     current_month_expenses = expenses.filter(date__month=datetime.now().month)
     category_proportions = current_month_expenses.values(
