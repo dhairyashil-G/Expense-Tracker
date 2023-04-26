@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Plot from "react-plotly.js";
 import useAxios from "../utils/useAxios";
+import Heading from "./Heading"
 
 export default function Dashboard() {
   const api = useAxios();
@@ -31,6 +32,7 @@ export default function Dashboard() {
 
   return (
     <>
+      <Heading heading="DashBoard"/>
       <div>
         <Plot
           data={bar?.data}
