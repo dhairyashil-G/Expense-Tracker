@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
 import AuthContext from "../context/AuthContext";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -50,7 +51,7 @@ const Login = () => {
           <div class="flex flex-col space-y-5">
             <input type="submit" value="Login" id="login" className="bg-blue-700 w-full h-10 cursor-pointer text-white rounded-md hover:bg-blue-600 hover:outline-2 outline-blue-600 outline-offset-2 text-sm" onClick={handleSubmit} />
           </div>
-          <p className="text-xs my-2">New User?  <a href="#" className="text-blue-600">Signup</a></p>
+          <p className="text-xs my-2">New User?  <a href="#" className="text-blue-600"><Link to={`/signup`}>Signup</Link></a></p>
         </form>
         </div>
     </div>
