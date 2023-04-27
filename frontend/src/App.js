@@ -6,7 +6,7 @@ import PrivateRoute from "./utils/PrivateRoute";
 // import NavBar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
-// import SignupPage from "./pages/SignupPage";
+//import SignupPage from "./pages/SignupPage";
 // import ShowExpensesPage from "./pages/ShowExpensesPage";
 // import AddExpensePage from "./pages/AddExpensePage";
 import DashboardPage from "./pages/DashboardPage";
@@ -22,7 +22,7 @@ function App() {
             <Routes>
               <Route path="/home" element={<HomePage />} />
               <Route path="/login" element={<LoginPage />} />
-              {/* <Route path="/signup" element={<SignupPage />} /> */}
+              {/* <Route path="/signup" element={<SignupPage />} />  */}
               {/* <Route
                 path="/expenses/add_expense"
                 element={
@@ -39,14 +39,14 @@ function App() {
                   </PrivateRoute>
                 }
               /> */}
-              <Route
+              {/* <Route
                 path="/expenses/dashboard"
                 element={
                   <PrivateRoute>
                     <DashboardPage />
                   </PrivateRoute>
                 }
-              />
+              /> */}
             </Routes>
           </div>
         </div>
