@@ -33,7 +33,7 @@ export default function Dashboard() {
   return (
     <>
       <Heading heading="DashBoard"/>
-      <div>
+      <div class="mx-auto" style={{width:"70%"}}>
         <Plot
           data={bar?.data}
           layout={bar?.layout}
