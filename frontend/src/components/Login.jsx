@@ -1,9 +1,9 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
-import FormAction from "./FormAction";
-import FormExtra from "./FormExtra";
-import Alert from "./Alert";
+// import FormAction from "./FormAction";
+// import FormExtra from "./FormExtra";
+// import Alert from "./Alert";
 import axios from "axios";
 import AuthContext from "../context/AuthContext";
 

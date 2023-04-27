@@ -1,54 +1,64 @@
 import "./App.css";
 import "./index.css";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import NavBar from "./components/Navbar";
-import LoginPage from "./component/pages/LoginPage";
-import SignupPage from "./components/pages/SignupPage";
-import ShowExpensesPage from "./components/pages/ShowExpensesPage";
-import AddExpensePage from "./components/pages/AddExpensePage";
-import DashboardPage from "./components/pages/DashboardPage";
+// import navPage from "./pages/NavBar";
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
+import ShowExpensesPage from "./pages/ShowExpensesPage";
+import AddExpensePage from "./pages/AddExpensePage";
+import DashboardPage from "./pages/DashboardPage";
 import Footer from "./components/Footer";
+
 
 function App() {
   return (
-    <AuthProvider>
+    // <AuthProvider>
       <div className="flex flex-col h-screen">
-        <div>{/* <NavBar /> */}</div>
+        {/* <div><NavBar /></div> */}
         <div className="flex-grow justify-center py-10 px-4 mb-auto">
           <div className="w-full space-y-10">
-            <Routes>
+            {/* <Routes> */}
+              {/* <LoginPage/> */}
+              {/* <Route path="/navbar" element={<navPage/>} /> */}
+              <NavBar/>
+              <SignupPage/>
+              <AddExpensePage/>
               {/* <Route path="/home" element={<HomePage />} /> */}
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/signup" element={<SignupPage />} />
-              <Route
+              {/* <Route path="/login" element={<LoginPage />} /> */}
+              {/* <Route path="/signup" element={<SignupPage />} /> */}
+              {/* <Route
                 path="/expenses/add_expense"
                 element={
                   <PrivateRoute>
                     <AddExpensePage />
                   </PrivateRoute>
                 }
-              />
-              <Route
+              /> */}
+              {/* <Route
                 path="/expenses/show_expenses"
                 element={
                   <PrivateRoute>
                     <ShowExpensesPage />
                   </PrivateRoute>
                 }
-              />
-              <Route
+              /> */}
+              {/* <Route
                 path="/expenses/dashboard"
                 element={
                   <PrivateRoute>
                     <DashboardPage />
                   </PrivateRoute>
                 }
-              />
-            </Routes>
+              /> */}
+            {/* </Routes> */}
           </div>
         </div>
-        <div>{/* <Footer /> */}</div>
+        <div><Footer /></div>
       </div>
-    </AuthProvider>
+    // </AuthProvider>
+
+
   );
 }
 
