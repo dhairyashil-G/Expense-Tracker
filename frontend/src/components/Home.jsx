@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 function Home() {
   const features = [
-    { text: 'Record your expenses and categorize them', symbol: '💰' ,Route : 'add_expense'},
-    { text: 'View a summary of your spending', symbol: '📊',Route : 'show_expense' },  
+    { text: 'Record your expenses and categorize them', symbol: '💰' ,Route : 'add_expenses'},
+    { text: 'View a summary of your spending', symbol: '📊',Route : 'show_expenses' },  
     { text: 'Analyze your expenses with charts and graphs', symbol: '📈',Route : 'dashboard' },
     { text: 'Set budget goals and track your progress', symbol: '🎯' ,Route : ''},
   ];

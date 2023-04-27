@@ -7,7 +7,7 @@ import PrivateRoute from "./utils/PrivateRoute";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 //import SignupPage from "./pages/SignupPage";
-// import ShowExpensesPage from "./pages/ShowExpensesPage";
+import ShowExpensesPage from "./pages/ShowExpensesPage";
 // import AddExpensePage from "./pages/AddExpensePage";
 import DashboardPage from "./pages/DashboardPage";
 // import Footer from "./components/Footer";
@@ -31,14 +31,14 @@ function App() {
                   </PrivateRoute>
                 }
               /> */}
-              {/* <Route
+              <Route
                 path="/expenses/show_expenses"
                 element={
                   <PrivateRoute>
                     <ShowExpensesPage />
                   </PrivateRoute>
                 }
-              /> */}
+              />
               <Route
                 path="/expenses/dashboard"
                 element={
