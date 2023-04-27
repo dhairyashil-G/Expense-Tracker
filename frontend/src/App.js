@@ -39,14 +39,14 @@ function App() {
                   </PrivateRoute>
                 }
               /> */}
-              {/* <Route
+              <Route
                 path="/expenses/dashboard"
                 element={
                   <PrivateRoute>
                     <DashboardPage />
                   </PrivateRoute>
                 }
-              /> */}
+              />
             </Routes>
           </div>
         </div>
