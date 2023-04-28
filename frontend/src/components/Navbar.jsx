@@ -1,12 +1,14 @@
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
-import expensetrackerlogo from "../images/logo1.png";
+import expensetrackerlogo from "../images/logo2.png";
 
 export default function NavBar() {
   const [navbar, setNavbar] = useState(false);
   const { user, logoutUser } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  
 
   return (
     <nav className="w-full bg-gray-900 shadow">
@@ -68,18 +70,28 @@ export default function NavBar() {
           >
             {!user ? (
               <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-                <li className="text-white hover:text-blue-200">
-                  <Link to={`/home`}><a href="javascript:void(0)">Home</a></Link>
+                <li className="text-white font-bold hover:text-blue-200">
+                <Link to="/home">
+                 <button className="border border-white text-white font-medium rounded-md px-4 py-2 hover:bg-blue-200 hover:text-gray-900">
+                  Home
+                 </button>
+                </Link> 
                 </li>
-                <li className="text-white hover:text-blue-200">
-                  <Link to={`/login`}><a href="javascript:void(0)">Login</a></Link>
+                <li className="text-white font-bold hover:text-blue-200">
+                <Link to="/login">
+                  <button className="border border-white text-white font-medium rounded-md px-4 py-2 hover:bg-blue-200 hover:text-gray-900" >
+                    Login
+                  </button>
+                </Link>
                 </li>
               </ul>
             ) : (
               <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-                <li className="text-white hover:text-blue-200">
-                  <a href="javascript:void(0)" onClick={logoutUser}>Logout</a>
-                </li>
+                {/* <li className="text-white font-bold hover:text-blue-200"> */}
+                <button className="border border-white text-white font-medium rounded-md px-4 py-2 hover:bg-blue-200 hover:text-gray-900" onClick={logoutUser}>
+                  Logout
+                </button>
+                {/* </li> */}
               </ul>
             )}
           </div>

@@ -62,7 +62,7 @@ const CreateExpenseForm = () => {
             type="number"
             name="amount"
             min="0"
-            step="0.01"
+            step="1"
             value={formData.amount}
             onChange={handleChange}
             required
