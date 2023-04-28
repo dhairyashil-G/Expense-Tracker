@@ -1,6 +1,8 @@
 import { useState } from "react";
 import useAxios from "../utils/useAxios";
 import Heading from "./Heading";
+import Alert from "../utils/Alerts";
+
 
 const CreateExpenseForm = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +11,7 @@ const CreateExpenseForm = () => {
     category: "",
     description: "",
   });
+  const [alerts,setalert]=useState({})
   const api = useAxios();
 
   const handleSubmit = async (event) => {
@@ -17,8 +20,10 @@ const CreateExpenseForm = () => {
     try {
         const options = { headers: { "content-type": "application/json"} };
         await api.post("/expenses/add_expense/", formData,options);
+        setalert({message :"Expense added successfully",type : "success"})
         setFormData({ date: "", amount: "", category: "", description: "" });
     } catch (error) {
+      setalert({message :"Please enter valid data !",type : "success"}) 
       console.error(error);
     }
   };
@@ -31,6 +36,7 @@ const CreateExpenseForm = () => {
   return (
         <>
         <Heading heading={"Add Expense"} />
+        {alerts.message && <Alert message={alerts.message} type={alerts.type} />}
         <form
         className="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg mt-16"
         onSubmit={handleSubmit}

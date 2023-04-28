@@ -4,11 +4,13 @@ import jwt_decode from "jwt-decode";
 import axios from "axios";
 import AuthContext from "../context/AuthContext";
 import { Link } from "react-router-dom";
+import Alert from "../utils/Alerts";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { setUser, setAuthTokens } = useContext(AuthContext);
+  const [alerts,setalert]=useState({})
   const navigate = useNavigate();
 
   const loginUser = async (username, password) => {
@@ -23,9 +25,12 @@ const Login = () => {
       setAuthTokens(response.data);
       setUser(jwt_decode(response.data.access));
       localStorage.setItem("authTokens", JSON.stringify(response.data));
+      setalert({message :"Login Successfull !",type : "success"})
       navigate("/home");
     } catch (error) {
+      setalert({message :"Invalid Credentials !",type : "error"})
       console.log(error);
+      
     }
   };
 
@@ -37,6 +42,7 @@ const Login = () => {
   return (
     <div className="flex justify-center items-center mt-3" >
         <div className="fblock mt-0 bg-slate-50 p-6 round-xl shadow-md shadow-slate-300 w-96">
+        {alerts.message && <Alert message={alerts.message} type={alerts.type} />}
         <form action="">
           <h2 className="text-blue-700 text-3xl font-semibold my-4">User Login</h2>
           

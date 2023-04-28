@@ -1,6 +1,8 @@
 import { useState } from "react";
 import useAxios from "../utils/useAxios";
 import { useNavigate,Link } from "react-router-dom";
+import Alert from "../utils/Alerts"
+
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -8,13 +10,14 @@ const Signup = () => {
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
   const [limit, setLimit] = useState(0);
+  const [alerts,setalert]=useState({})
   const navigate = useNavigate();
   const api=useAxios();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (password1 !== password2) {
-      alert("Passwords do not match!");
+      setalert({message :"Password do not match !",type : "error"})
       return;
     }
 
@@ -23,16 +26,18 @@ const Signup = () => {
       const options = { headers: { "content-type": "application/json" } };
       await api.post("/accounts/signup/", data, options);
       console.log(data)
+      
       navigate("/login");
     } catch (error) {
       console.log(error);
-      alert("Error occurred during signup");
+      setalert({message :"Something went wrong !",type : "error"})
     }
   };
 
   return (
     <div className="flex justify-center items-center my-3 ">
       <div className="fblock bg-slate-50 p-5 round-xl shadow-md shadow-slate-300 w-96">
+      {alerts.message && <Alert message={alerts.message} type={alerts.type} />}
         <form>
           <h2 className="text-blue-700 text-3xl font-semibold my-2">User Signup</h2>
 
