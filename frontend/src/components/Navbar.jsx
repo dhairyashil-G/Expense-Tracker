@@ -1,34 +1,90 @@
-import React, {useState} from "react";
-import {AiOutlineClose, AiOutlineMenu} from 'react-icons/ai'
+import { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import AuthContext from "../context/AuthContext";
+import expensetrackerlogo from "../images/logo1.png";
 
-const NavBar = () => {
-    const [nav, setNav] = useState(0)
+export default function NavBar() {
+  const [navbar, setNavbar] = useState(false);
+  const { user, logoutUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-    const handleNav  = () =>{
-        setNav(!nav)
-    }
-    return(
-        <div className='flex justify-between items-center h-8 max-w-[1240px] text-[#0068df]'>
-            <h1 className="w-full text-3xl font-bold text-[#0068df]">ExpenseTracker</h1>
-        <ul className="hidden md:flex">
-            <li className="p-4 text-2xl font-semibold">SignUp</li>
-            <li className="p-4 text-2xl font-semibold">Login</li>
-            {/* <li className="p-4">Contact</li> */}
-        </ul>
-        <div onClick={handleNav} className='block md:hidden'> 
-            {!nav ? <AiOutlineClose size={20}/> : <AiOutlineMenu size={20}/> }
-            {/* <AiOutlineMenu size={20}/> */}
+  return (
+    <nav className="w-full bg-gray-900 shadow">
+      <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
+        <div>
+          <div className="flex items-center justify-between md:py-2 md:block">
+            <a href="javascript:void(0)">
+            <Link to={'/home'}>
+              <img
+                className="h-20 px-2 flex justify-around content-start space-evenly"
+                src={expensetrackerlogo}
+                alt="logo"
+                />
+            </Link>
+            </a>
+            <div className="md:hidden">
+              <button
+                className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
+                onClick={() => setNavbar(!navbar)}
+              >
+                {navbar ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  </svg>
+                )}
+              </button>
+            </div>
+          </div>
         </div>
-        <div className={!nav ? 'fixed left-0 top-0 w-[40%] h-full border-r border-r-gray-900 bg-white ease-in-out duration-500' : 'fixed left-[-100%]'}>
-        <h1 className="w-full text-3xl font-bold text-[#0068df]">ExpenseTracker</h1>
-            <ul className="uppercase p-4">
-            <li className="p-4 text-2xl font-semibold">SignUp</li>
-            <li className="p-4 text-2xl font-semibold">Login</li>
-            </ul>
+        <div>
+          <div
+            className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
+              navbar ? "block" : "hidden"
+            }`}
+          >
+            {!user ? (
+              <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
+                <li className="text-white hover:text-blue-200">
+                  <Link to={`/home`}><a href="javascript:void(0)">Home</a></Link>
+                </li>
+                <li className="text-white hover:text-blue-200">
+                  <Link to={`/login`}><a href="javascript:void(0)">Login</a></Link>
+                </li>
+              </ul>
+            ) : (
+              <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
+                <li className="text-white hover:text-blue-200">
+                  <a href="javascript:void(0)" onClick={logoutUser}>Logout</a>
+                </li>
+              </ul>
+            )}
+          </div>
         </div>
-    </div>
-    )
-    
+      </div>
+    </nav>
+  );
 }
-
-export default NavBar

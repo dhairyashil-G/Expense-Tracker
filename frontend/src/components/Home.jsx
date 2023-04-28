@@ -5,7 +5,7 @@ function Home() {
     { text: 'Record your expenses and categorize them', symbol: '💰' ,Route : 'add_expenses'},
     { text: 'View a summary of your spending', symbol: '📊',Route : 'show_expenses' },  
     { text: 'Analyze your expenses with charts and graphs', symbol: '📈',Route : 'dashboard' },
-    { text: 'Set budget goals and track your progress', symbol: '🎯' ,Route : ''},
+    // { text: 'Set budget goals and track your progress', symbol: '🎯' ,Route : ''},
   ];
   
     const fancyOneLine = 'Master your finances with ease and style!';
@@ -16,12 +16,12 @@ function Home() {
           <div className="py-12 text-center">
             <h1 className="text-4xl font-bold text-blue-700">Expense Tracker</h1>
             <p className="mt-4 text-lg text-gray-600">{fancyOneLine}</p>
-            <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
+            <div className="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
               {features.map((feature, index) => (
                 <Link to={`/expenses/${feature.Route}`}>
                   <div key={index} className="flex flex-col items-center bg-white rounded-lg p-4 shadow-lg">
-                    <span className="text-3xl mb-2">{feature.symbol}</span>
-                    <span className="text-lg text-gray-700">{feature.text}</span>
+                    <span className="text-3xl my-3">{feature.symbol}</span>
+                    <span className="text-lg text-gray-700 my-2">{feature.text}</span>
                   </div>
                 </Link> 
               ))}

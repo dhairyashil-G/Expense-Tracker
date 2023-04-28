@@ -35,8 +35,8 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-slate-200">
-        <div className="fblock bg-slate-50 p-6 round-xl shadow-md shadow-slate-300 w-96">
+    <div className="flex justify-center items-center mt-3" >
+        <div className="fblock mt-0 bg-slate-50 p-6 round-xl shadow-md shadow-slate-300 w-96">
         <form action="">
           <h2 className="text-blue-700 text-3xl font-semibold my-4">User Login</h2>
           

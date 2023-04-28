@@ -17,8 +17,8 @@ function App() {
   return (
     <AuthProvider>
       <div className="flex flex-col h-screen">
-        {/* <div><NavBar /></div> */}
-        <div className="flex-grow justify-center py-10 px-4 mb-auto">
+        <div><NavBar /></div>
+        <div className="flex-grow bg-slate-50 justify-center py-10 px-4 mb-auto">
           <div className="w-full space-y-10">
             <Breadcrumb/>
             <Routes>
