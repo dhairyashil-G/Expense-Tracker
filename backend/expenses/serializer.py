@@ -6,15 +6,14 @@ class CreateExepenseSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Expenses
-        # fields = ['amount', 'category', 'description']
-        fields = ['date', 'amount', 'category', 'description', 'user']
+        fields = ['date','amount', 'category', 'description']
+        # fields = ['date', 'amount', 'category', 'description', 'user']
 
     def save(self):
-        # user_instance = self.context['request'].user
-        # expense_instance = Expenses.objects.create(user=user_instance, **self.validated_data)
-        expense_instance = Expenses.objects.create(**self.validated_data)
+        user_instance = self.context['request'].user
+        expense_instance = Expenses.objects.create(user=user_instance, **self.validated_data)
+        # expense_instance = Expenses.objects.create(**self.validated_data)
         return expense_instance
-
 
 class ListExpensesSerializer(serializers.ModelSerializer):
 

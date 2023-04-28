@@ -16,7 +16,7 @@ from datetime import datetime
 
 
 class AddExpenseView(generics.CreateAPIView):
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     serializer_class = CreateExepenseSerializer
 
 

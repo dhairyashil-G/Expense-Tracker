@@ -11,6 +11,7 @@ import ShowExpensesPage from "./pages/ShowExpensesPage";
 import AddExpensePage from "./pages/AddExpensePage";
 import DashboardPage from "./pages/DashboardPage";
 import Footer from "./components/Footer";
+import Breadcrumb from "./components/Breadcrumb";
 
 function App() {
   return (
@@ -19,12 +20,13 @@ function App() {
         {/* <div><NavBar /></div> */}
         <div className="flex-grow justify-center py-10 px-4 mb-auto">
           <div className="w-full space-y-10">
+            <Breadcrumb/>
             <Routes>
               <Route path="/home" element={<HomePage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignupPage />} />
               <Route
-                path="/expenses/add_expense"
+                path="/expenses/add_expenses"
                 element={
                   <PrivateRoute>
                     <AddExpensePage />

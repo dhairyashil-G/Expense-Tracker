@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import useAxios from "../utils/useAxios";
 import { useNavigate,Link } from "react-router-dom";
 
 const Signup = () => {
@@ -9,6 +9,7 @@ const Signup = () => {
   const [password2, setPassword2] = useState("");
   const [limit, setLimit] = useState(0);
   const navigate = useNavigate();
+  const api=useAxios();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -20,7 +21,8 @@ const Signup = () => {
     try {
       const data = JSON.stringify({ username, email, limit, password1, password2});
       const options = { headers: { "content-type": "application/json" } };
-      await axios.post("http://127.0.0.1:8000/accounts/signup/", data, options);
+      await api.post("/accounts/signup/", data, options);
+      console.log(data)
       navigate("/login");
     } catch (error) {
       console.log(error);
