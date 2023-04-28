@@ -12,8 +12,8 @@ function Home() {
   
     return (
       <div className="bg-gray-100 min-h-screen">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="py-12 text-center">
+        <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
+          <div className="py-5 text-center">
             <h1 className="text-4xl font-bold text-blue-700">Expense Tracker</h1>
             <p className="mt-4 text-lg text-gray-600">{fancyOneLine}</p>
             <div className="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">

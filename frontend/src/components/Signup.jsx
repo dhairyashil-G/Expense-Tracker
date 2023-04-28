@@ -31,10 +31,10 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-slate-200">
-      <div className="fblock bg-slate-50 p-6 round-xl shadow-md shadow-slate-300 w-96">
+    <div className="flex justify-center items-center my-3 ">
+      <div className="fblock bg-slate-50 p-5 round-xl shadow-md shadow-slate-300 w-96">
         <form>
-          <h2 className="text-blue-700 text-3xl font-semibold my-4">User Signup</h2>
+          <h2 className="text-blue-700 text-3xl font-semibold my-2">User Signup</h2>
 
           <div className="flex flex-col space-y-2">
             <label className="text-sm">Username</label>
