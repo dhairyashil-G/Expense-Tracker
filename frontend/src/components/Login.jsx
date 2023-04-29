@@ -26,7 +26,7 @@ const Login = () => {
       setUser(jwt_decode(response.data.access));
       localStorage.setItem("authTokens", JSON.stringify(response.data));
       setalert({message :"Login Successfull !",type : "success"})
-      navigate("/home");
+      navigate("/");
     } catch (error) {
       setalert({message :"Invalid Credentials !",type : "error"})
       console.log(error);

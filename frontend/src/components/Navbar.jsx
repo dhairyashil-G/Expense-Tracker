@@ -16,7 +16,7 @@ export default function NavBar() {
         <div>
           <div className="flex items-center justify-between md:py-2 md:block">
             <a href="javascript:void(0)">
-            <Link to={'/home'}>
+            <Link to={'/'}>
               <img
                 className="h-20 px-2 flex justify-around content-start space-evenly"
                 src={expensetrackerlogo}
@@ -71,7 +71,7 @@ export default function NavBar() {
             {!user ? (
               <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
                 <li className="text-white font-bold hover:text-blue-200">
-                <Link to="/home">
+                <Link to="/">
                  <button className="border border-white text-white font-medium rounded-md px-4 py-2 hover:bg-blue-200 hover:text-gray-900">
                   Home
                  </button>

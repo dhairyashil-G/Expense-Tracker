@@ -8,7 +8,7 @@ export default function Breadcrumb() {
       <ol className="inline-flex items-center space-x-1">
         <li className="inline-flex items-center">
           <a
-            onClick={() => navigate("/home")}
+            onClick={() => navigate("/")}
             className="inline-flex items-center text-base font-medium text-[#1F3F7B] hover:text-blue-700 cursor-pointer"
           >
             Home
