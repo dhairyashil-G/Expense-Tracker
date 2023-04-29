@@ -22,7 +22,7 @@ function App() {
           <div className="w-full space-y-10">
             <Breadcrumb/>
             <Routes>
-              <Route path="/home" element={<HomePage />} />
+              <Route path="/" element={<HomePage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignupPage />} />
               <Route
