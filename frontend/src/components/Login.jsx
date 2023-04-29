@@ -40,7 +40,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center mt-3" >
+    <div className="flex justify-center items-center mt-3"style={{minHeight:"400px"}} >
         <div className="fblock mt-0 bg-slate-50 p-6 round-xl shadow-md shadow-slate-300 w-96">
         {alerts.message && <Alert message={alerts.message} type={alerts.type} />}
         <form action="">

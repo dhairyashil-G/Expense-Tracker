@@ -12,7 +12,7 @@ function Home() {
     const fancyOneLine = 'Master your finances with ease and style!';
   
     return (
-      <div className="bg-gray-100 min-h-screen">
+      <div className="bg-gray-100 " style={{minHeight:"400px"}}>
         <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
           <div className="py-5 text-center">
             {/* <h1 className="text-4xl font-bold text-blue-700">Expense Tracker</h1> */}
