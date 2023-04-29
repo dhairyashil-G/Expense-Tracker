@@ -20,3 +20,9 @@ class ListExpensesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Expenses
         fields = ['id', 'date', 'amount', 'category', 'description']
+
+
+class ExpensesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Expenses
+        fields = '__all__'

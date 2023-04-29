@@ -1,8 +1,18 @@
 import { useTable, useSortBy, usePagination } from "react-table";
 import tw from "twin.macro";
 import Heading from "./Heading";
+import useAxios from "../utils/useAxios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  faTrash,
+  faEye,
+  faEdit,
+  faRightToBracket,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function Table({ columns, data }) {
+  const api = useAxios();
   const Table = tw.table`table-fixed text-base text-gray-900`;
   const TableHead = tw.thead`p-2`;
   const TableRow = tw.tr`border border-black`;
@@ -10,15 +20,60 @@ export default function Table({ columns, data }) {
   const TableBody = tw.tbody``;
   const TableData = tw.td`border border-black p-5`;
 
+  const handleDelete = async (id) => {
+    if (window.confirm("Are you sure you want to delete this well?")) {
+      const response = await api
+        .delete(`/expenses/delete_expense/${id}/`)
+        .then(window.location.reload());
+      }
+    };
+
+
+  const tableHooks = (hooks) => {
+    hooks.visibleColumns.push((columns) => [
+      ...columns,
+      {
+        id: "Actions",
+        Header: "Actions",
+        Cell: (props) => {
+          const rowIdx = props.row.original.id;
+          return (
+            <div className="flex place-content-center">
+              {/* <a
+                href={"/expenses/update_expense/" + rowIdx}
+                className="px-2 rounded-full focus:shadow-outline hover:bg-gray-200"
+              > */}
+              <Link to={"/expenses/update_expenses/" + rowIdx}>
+                <FontAwesomeIcon icon={faEdit} color="blue"></FontAwesomeIcon>
+              </Link>
+              {/* </a> */}
+              <button
+                onClick={() => handleDelete(rowIdx)}
+                className="px-2 rounded-full focus:shadow-outline hover:bg-gray-200"
+              >
+                <FontAwesomeIcon icon={faTrash} color="red"></FontAwesomeIcon>
+              </button>
+            </div>
+          );
+        },
+      },
+    ]);
+  };
+
+
+  const navigate=useNavigate();
   const tableInstance = useTable(
     {
       columns: columns,
       data: data,
       initialState: { pageIndex: 0, pageSize: 10 },
     },
+    tableHooks,
     useSortBy,
     usePagination
   );
+    
+
 
   const {
     getTableProps,
@@ -36,6 +91,15 @@ export default function Table({ columns, data }) {
     prepareRow,
     state,
   } = tableInstance;
+
+
+  // const handleDelete = async (id) => {
+  //   if (window.confirm("Are you sure you want to delete this well?")) {
+  //     const response = await api
+  //       .delete(`/data/delete/${id}/`)
+  //       .then(window.location.reload());
+  //   }
+  // };
 
   const isEven = (idx) => idx % 2 === 0;
   const { pageIndex, pageSize } = state;

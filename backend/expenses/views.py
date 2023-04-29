@@ -1,6 +1,6 @@
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
-from .serializer import CreateExepenseSerializer, ListExpensesSerializer
+from .serializer import CreateExepenseSerializer, ListExpensesSerializer,ExpensesSerializer
 from rest_framework import generics
 from .models import Expenses
 import plotly
@@ -28,6 +28,31 @@ class ShowExpensesView(generics.ListAPIView):
         user = self.request.user
         return Expenses.objects.filter(user=user)
         # return Expenses.objects.filter(user=3)
+
+class ReadExpensesView(generics.RetrieveAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = ExpensesSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        return Expenses.objects.filter(user=user)
+
+class UpdateExpensesView(generics.UpdateAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = CreateExepenseSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        return Expenses.objects.filter(user=user)
+    
+    
+class DeleteExpensesView(generics.DestroyAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = ExpensesSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        return Expenses.objects.filter(user=user)
 
 
 @api_view(['GET', ])

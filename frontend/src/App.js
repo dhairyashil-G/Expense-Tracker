@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import ShowExpensesPage from "./pages/ShowExpensesPage";
 import AddExpensePage from "./pages/AddExpensePage";
+import UpdateExpensesPage from "./pages/UpdateExpensePage";
 import DashboardPage from "./pages/DashboardPage";
 import Footer from "./components/Footer";
 import Breadcrumb from "./components/Breadcrumb";
@@ -40,7 +41,15 @@ function App() {
                     <ShowExpensesPage />
                   </PrivateRoute>
                 }
-              /> */
+              /> 
+              <Route
+                path="/expenses/update_expenses/:id"
+                element={
+                  <PrivateRoute>
+                    <UpdateExpensesPage />
+                  </PrivateRoute>
+                }
+              /> 
               <Route
                 path="/expenses/dashboard"
                 element={

@@ -70,13 +70,13 @@ export default function NavBar() {
           >
             {!user ? (
               <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-                <li className="text-white font-bold hover:text-blue-200">
+                {/* <li className="text-white font-bold hover:text-blue-200">
                 <Link to="/">
                  <button className="border border-white text-white font-medium rounded-md px-4 py-2 hover:bg-blue-200 hover:text-gray-900">
                   Home
                  </button>
                 </Link> 
-                </li>
+                </li> */}
                 <li className="text-white font-bold hover:text-blue-200">
                 <Link to="/login">
                   <button className="border border-white text-white font-medium rounded-md px-4 py-2 hover:bg-blue-200 hover:text-gray-900" >
