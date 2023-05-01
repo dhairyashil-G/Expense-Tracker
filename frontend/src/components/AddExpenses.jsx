@@ -81,8 +81,8 @@ const CreateExpenseForm = () => {
             <option value="" disabled hidden>
             Choose a category
             </option>
-            <option value="housing">Housing</option>
-            <option value="transportation">Transportation</option>
+            <option value="Housing">Housing</option>
+            <option value="Transportation">Transportation</option>
             <option value="Groceries">Groceries</option>
             <option value="Health Care">Health Care</option>
             <option value="Entertainment">Entertainment</option>
