@@ -23,7 +23,7 @@ const Signup = () => {
     try {
       const data = JSON.stringify({ username, email, limit, password1, password2});
       const options = { headers: { "content-type": "application/json" } };
-      await axios.post("http://127.0.0.1:8000/accounts/signup/", data, options);
+      await axios.post("https://expense-tracker-backend.up.railway.app/accounts/signup/", data, options);
       navigate("/login");
     } catch (error) {
       console.log(error);

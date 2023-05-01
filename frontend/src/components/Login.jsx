@@ -18,7 +18,7 @@ const Login = () => {
       const data = JSON.stringify({ username, password });
       const options = { headers: { "content-type": "application/json" } };
       const response = await axios.post(
-        `http://127.0.0.1:8000/accounts/token/`,
+        `https://expense-tracker-backend.up.railway.app/accounts/token/`,
         data,
         options
       );
