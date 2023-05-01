@@ -66,7 +66,7 @@ function UpdateExpense() {
 
 
   return(<>
-    <Heading heading={"Add Expense"} />
+    <Heading heading={"Edit Expense"} />
     {alerts.message && <Alert message={alerts.message} type={alerts.type} />}
     <form
     className="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg mt-16"
