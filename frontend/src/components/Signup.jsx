@@ -1,8 +1,7 @@
 import { useState } from "react";
-import useAxios from "../utils/useAxios";
+import axios from "axios";
 import { useNavigate,Link } from "react-router-dom";
-import Alert from "../utils/Alerts"
-
+import Alert from "../utils/Alerts";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -12,11 +11,11 @@ const Signup = () => {
   const [limit, setLimit] = useState(0);
   const [alerts,setalert]=useState({})
   const navigate = useNavigate();
-  const api=useAxios();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (password1 !== password2) {
+      alert("Passwords do not match!");
       setalert({message :"Password do not match !",type : "error"})
       return;
     }
@@ -24,22 +23,21 @@ const Signup = () => {
     try {
       const data = JSON.stringify({ username, email, limit, password1, password2});
       const options = { headers: { "content-type": "application/json" } };
-      await api.post("/accounts/signup/", data, options);
-      console.log(data)
-      
+      await axios.post("http://127.0.0.1:8000/accounts/signup/", data, options);
       navigate("/login");
     } catch (error) {
       console.log(error);
+      alert("Error occurred during signup");
       setalert({message :"Something went wrong !",type : "error"})
     }
   };
 
   return (
-    <div className="flex justify-center items-center my-3 ">
-      <div className="fblock bg-slate-50 p-5 round-xl shadow-md shadow-slate-300 w-96">
+    <div className="flex justify-center items-center h-screen bg-slate-200">
+      <div className="fblock bg-slate-50 p-6 round-xl shadow-md shadow-slate-300 w-96">
       {alerts.message && <Alert message={alerts.message} type={alerts.type} />}
         <form>
-          <h2 className="text-blue-700 text-3xl font-semibold my-2">User Signup</h2>
+          <h2 className="text-blue-700 text-3xl font-semibold my-4">User Signup</h2>
 
           <div className="flex flex-col space-y-2">
             <label className="text-sm">Username</label>
