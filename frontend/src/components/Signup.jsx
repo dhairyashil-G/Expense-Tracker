@@ -33,7 +33,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-slate-200">
+    <div className="flex justify-center items-center h-screen">
       <div className="fblock bg-slate-50 p-6 round-xl shadow-md shadow-slate-300 w-96">
       {alerts.message && <Alert message={alerts.message} type={alerts.type} />}
         <form>
