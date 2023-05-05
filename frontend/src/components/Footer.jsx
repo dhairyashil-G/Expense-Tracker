@@ -15,14 +15,20 @@ const simpleFooter = () => {
             <p className="text-white mt-6">&copy; 2023 ExpenseTracker. All rights reserved.</p>
 
           </div>
-          <div className="w-full lg:w-6/12 px-4">
-            <div className="flex flex-wrap items-top mb-3">
-              <div className="w-full lg:w-4/12 px-4 ml-auto">
-                <span className="block uppercase text-white font-bold mb-2 text-xl">Contact Us</span>
-                <p class="mt-1 text-base text-white"><a href="https://www.linkedin.com/in/dhairyashil-ghatage-b66a09139/" target="_blank">Dhairyashil Ghatage</a></p>
-                <p class="mt-1 text-base text-white"><a href="https://www.linkedin.com/in/sahil-gidwani/" target="_blank">Sahil Gidwani</a></p>
-                <p class="mt-1 text-base text-white"><a href="https://www.linkedin.com/in/praneet-kittad-9b8809202/" target="_blank">Praneet Kittad</a></p>
-                <p class="mt-1 text-base text-white"><a href="https://www.linkedin.com/in/awazeshaikh7/" target="_blank">Awaze Shaikh</a></p>
+          <div className="w-full lg:w-4/12 px-4 ml-auto">
+            <span className="block uppercase text-white font-bold mb-3 text-xl">Contact Us</span>
+            <div className="flex flex-row flex-wrap">
+              <div className="w-full lg:w-6/12">
+                <div className="flex flex-col">
+                  <p class="mt-1 text-base text-white"><a href="https://www.linkedin.com/in/dhairyashil-ghatage-b66a09139/" target="_blank">Dhairyashil Ghatage</a></p>
+                  <p class=" text-base text-white"><a href="https://www.linkedin.com/in/praneet-kittad-9b8809202/" target="_blank">Praneet Kittad</a></p>
+                </div>
+              </div>
+              <div className="w-full lg:w-6/12">
+                <div className="flex flex-col">
+                  <p class="mt-1 text-base text-white"><a href="https://www.linkedin.com/in/sahil-gidwani/" target="_blank">Sahil Gidwani</a></p>
+                  <p class="text-base text-white"><a href="https://www.linkedin.com/in/awazeshaikh7/" target="_blank">Awaze Shaikh</a></p>
+                </div>
               </div>
             </div>
           </div>
